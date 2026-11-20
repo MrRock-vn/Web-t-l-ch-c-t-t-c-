@@ -1,0 +1,46 @@
+:root {
+  --font-size: 16px;
+  --background: #F6F1E7;
+  --foreground: #1F1A17;
+  --card: #FDFAF4;
+  --card-foreground: #1F1A17;
+  --popover: #FDFAF4;
+  --popover-foreground: #1F1A17;
+  --primary: #C8923B;
+  --primary-foreground: #14110F;
+  --secondary: #1F1A17;
+  --secondary-foreground: #F6F1E7;
+  --muted: #EDE8DE;
+  --muted-foreground: #8A8178;
+  --accent: #C8923B;
+  --accent-foreground: #14110F;
+  --destructive: #B5483A;
+  --destructive-foreground: #ffffff;
+  --border: rgba(31, 26, 23, 0.12);
+  --ring: #C8923B;
+  --radius: 0.625rem;
+  --dark: #14110F;
+  --dark-surface: #1F1A17;
+  --cream: #F6F1E7;
+  --brass: #C8923B;
+  --brass-hover: #A9722A;
+  --sage: #6E8B74;
+  --muted-warm: #8A8178;
+}
+
+* {
+  box-sizing: border-box;
+  border-color: var(--border);
+}
+
+html {
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Be Vietnam Pro', sans-serif;
+}

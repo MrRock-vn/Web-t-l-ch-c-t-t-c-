@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: barber-spa-platform
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATA_ENCRYPTION_KEY
+        generateValue: true
+      - key: BCRYPT_ROUNDS
+        value: "10"
+      - key: MEMORY_DB_FALLBACK
+        value: "true"
+      - key: MONGO_URI
+        sync: false
+      - key: VNP_TMN_CODE
+        value: BARBERSPA01
+      - key: VNP_HASH_SECRET
+        generateValue: true
+      - key: VNP_URL
+        value: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+      - key: VNP_SIMULATE
+        value: "false"
