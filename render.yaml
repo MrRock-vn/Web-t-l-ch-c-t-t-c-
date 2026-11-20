@@ -27,3 +27,5 @@ services:
         value: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
       - key: VNP_SIMULATE
         value: "false"
+      - key: ALLOWED_ORIGINS
+        value: https://sonrise.id.vn,https://www.sonrise.id.vn

@@ -218,7 +218,6 @@ interface AppContextType {
 
   // Auth Actions
   login: (email: string, password: string) => Promise<{ ok: boolean; error?: string }>;
-  quickLoginRole: (role: UserRole) => Promise<void>;
   register: (payload: {
     name: string;
     email: string;
@@ -281,12 +280,6 @@ interface AppContextType {
 }
 
 const AppContext = createContext<AppContextType | null>(null);
-
-const DEV_QUICK_ACCOUNTS: Record<UserRole, { email: string; password: string }> = {
-  customer: { email: "khachhang@barberspa.vn", password: "123456" },
-  owner: { email: "owner@barberspa.vn", password: "owner123" },
-  admin: { email: "admin@barberspa.vn", password: "admin123" },
-};
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
   const [currentUser, setCurrentUser] = useState<UserDoc | null>(null);
@@ -456,15 +449,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       return { ok: true };
     } catch (err: any) {
       return { ok: false, error: err?.message || "Đăng nhập thất bại." };
-    }
-  };
-
-  // Chỉ giữ làm tiện ích demo nhanh ở môi trường dev — vẫn gọi POST /api/auth/login thật để nhận JWT
-  const quickLoginRole = async (role: UserRole) => {
-    const creds = DEV_QUICK_ACCOUNTS[role];
-    const res = await login(creds.email, creds.password);
-    if (res.ok) {
-      setAuthModalOpen(false);
     }
   };
 
@@ -847,7 +831,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         showToast,
         dismissToast,
         login,
-        quickLoginRole,
         register,
         updateProfile,
         changePassword,

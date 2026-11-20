@@ -179,48 +179,52 @@ export function Navigation() {
             Lịch hẹn ({bookings.length})
           </button>
 
-          {/* Quick Dashboard links for Owner & Admin */}
-          <button
-            onClick={() => setActiveView(activeView === "owner" ? "landing" : "owner")}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 5,
-              background: activeView === "owner" ? "#C8923B" : "transparent",
-              border: "1px solid rgba(200,146,59,0.3)",
-              borderRadius: 100,
-              padding: "5px 12px",
-              cursor: "pointer",
-              color: activeView === "owner" ? "#14110F" : "#EDE8DE",
-              fontFamily: "'Be Vietnam Pro', sans-serif",
-              fontSize: 12,
-              fontWeight: 600,
-              whiteSpace: "nowrap",
-            }}
-          >
-            <Store size={12} /> Chủ Salon
-          </button>
+          {/* Chỉ hiển thị nút Dashboard khi tài khoản có đúng vai trò */}
+          {(currentUser?.role === "owner" || currentUser?.role === "admin") && (
+            <button
+              onClick={() => setActiveView(activeView === "owner" ? "landing" : "owner")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 5,
+                background: activeView === "owner" ? "#C8923B" : "transparent",
+                border: "1px solid rgba(200,146,59,0.3)",
+                borderRadius: 100,
+                padding: "5px 12px",
+                cursor: "pointer",
+                color: activeView === "owner" ? "#14110F" : "#EDE8DE",
+                fontFamily: "'Be Vietnam Pro', sans-serif",
+                fontSize: 12,
+                fontWeight: 600,
+                whiteSpace: "nowrap",
+              }}
+            >
+              <Store size={12} /> Chủ Salon
+            </button>
+          )}
 
-          <button
-            onClick={() => setActiveView(activeView === "admin" ? "landing" : "admin")}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 5,
-              background: activeView === "admin" ? "#C8923B" : "transparent",
-              border: "1px solid rgba(200,146,59,0.3)",
-              borderRadius: 100,
-              padding: "5px 12px",
-              cursor: "pointer",
-              color: activeView === "admin" ? "#14110F" : "#EDE8DE",
-              fontFamily: "'Be Vietnam Pro', sans-serif",
-              fontSize: 12,
-              fontWeight: 600,
-              whiteSpace: "nowrap",
-            }}
-          >
-            <Shield size={12} /> Admin
-          </button>
+          {currentUser?.role === "admin" && (
+            <button
+              onClick={() => setActiveView(activeView === "admin" ? "landing" : "admin")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 5,
+                background: activeView === "admin" ? "#C8923B" : "transparent",
+                border: "1px solid rgba(200,146,59,0.3)",
+                borderRadius: 100,
+                padding: "5px 12px",
+                cursor: "pointer",
+                color: activeView === "admin" ? "#14110F" : "#EDE8DE",
+                fontFamily: "'Be Vietnam Pro', sans-serif",
+                fontSize: 12,
+                fontWeight: 600,
+                whiteSpace: "nowrap",
+              }}
+            >
+              <Shield size={12} /> Admin
+            </button>
+          )}
         </div>
 
         {/* Desktop CTA */}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { X, User, Shield, Store, CheckCircle2, AlertCircle } from "lucide-react";
+import { X, CheckCircle2, AlertCircle } from "lucide-react";
 import { useApp } from "../context/AppContext";
 
 export function AuthModal() {
@@ -10,7 +10,6 @@ export function AuthModal() {
     currentUser,
     bookings,
     login,
-    quickLoginRole,
     register,
     updateProfile,
     changePassword,
@@ -21,9 +20,9 @@ export function AuthModal() {
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  // Login state
-  const [loginEmail, setLoginEmail] = useState("khachhang@barberspa.vn");
-  const [loginPassword, setLoginPassword] = useState("123456");
+  // Login state (không điền sẵn tài khoản/mật khẩu khi đưa lên web công khai)
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
   // Register state
   const [regForm, setRegForm] = useState({
@@ -300,99 +299,6 @@ export function AuthModal() {
 
           {tab === "login" && (
             <>
-              {/* Quick Demo Role Switcher for Grading */}
-              <div
-                style={{
-                  backgroundColor: "rgba(200,146,59,0.08)",
-                  border: "1px solid rgba(200,146,59,0.25)",
-                  borderRadius: 12,
-                  padding: "14px",
-                  marginBottom: 20,
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: "'Be Vietnam Pro', sans-serif",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    color: "#C8923B",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.06em",
-                    marginBottom: 10,
-                  }}
-                >
-                  Đăng nhập nhanh 3 Actor (Theo Bảng 2.1 Báo cáo)
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
-                  <button
-                    type="button"
-                    onClick={() => quickLoginRole("customer")}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 5,
-                      padding: "10px 8px",
-                      borderRadius: 10,
-                      border: "1px solid rgba(31,26,23,0.12)",
-                      backgroundColor: "#FDFAF4",
-                      cursor: "pointer",
-                      fontFamily: "'Be Vietnam Pro', sans-serif",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      color: "#14110F",
-                    }}
-                  >
-                    <User size={16} color="#C8923B" />
-                    Khách hàng
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => quickLoginRole("owner")}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 5,
-                      padding: "10px 8px",
-                      borderRadius: 10,
-                      border: "1px solid rgba(31,26,23,0.12)",
-                      backgroundColor: "#FDFAF4",
-                      cursor: "pointer",
-                      fontFamily: "'Be Vietnam Pro', sans-serif",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      color: "#14110F",
-                    }}
-                  >
-                    <Store size={16} color="#C8923B" />
-                    Chủ Salon
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => quickLoginRole("admin")}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 5,
-                      padding: "10px 8px",
-                      borderRadius: 10,
-                      border: "1px solid rgba(31,26,23,0.12)",
-                      backgroundColor: "#FDFAF4",
-                      cursor: "pointer",
-                      fontFamily: "'Be Vietnam Pro', sans-serif",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      color: "#14110F",
-                    }}
-                  >
-                    <Shield size={16} color="#C8923B" />
-                    Admin
-                  </button>
-                </div>
-              </div>
-
               <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 <div>
                   <label
